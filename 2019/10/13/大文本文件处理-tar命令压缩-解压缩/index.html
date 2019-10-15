@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>搭建自己的linux工作环境 | 老龚的博客</title>
-  <meta name="keywords" content=" linux , 工作环境 ">
-  <meta name="description" content="搭建自己的linux工作环境 | 老龚的博客">
+  <title>大文本文件处理-Tar命令压缩_解压缩 | 老龚的博客</title>
+  <meta name="keywords" content=" Linux , Tar , 压缩解压缩 , 加密解密 , 大文本 ">
+  <meta name="description" content="大文本文件处理-Tar命令压缩_解压缩 | 老龚的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="缘由由于进公司之后长期使用win10操作系统，在win10操作系统不停强制更新之后，终于在2019年8月电脑开始频繁蓝屏，几乎每天一次！痛定思痛，决定放弃win10系统，采用win7作为主要操作系统，使用虚机的方式多系统联合作战。 …….未完待续">
 <meta name="keywords" content="linux,工作环境">
@@ -250,9 +250,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-搭建自己的linux工作环境" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-大文本文件处理-tar命令压缩-解压缩" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">搭建自己的linux工作环境</h1>
+        <h1 class="article-title">大文本文件处理-Tar命令压缩_解压缩</h1>
     
     <div class="article-meta">
         
@@ -267,16 +267,22 @@
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">linux</a>
+            <a href="javascript:" class="color1">Linux</a>
             
-            <a href="javascript:" class="color5">工作环境</a>
+            <a href="javascript:" class="color4">Tar</a>
+            
+            <a href="javascript:" class="color1">压缩解压缩</a>
+            
+            <a href="javascript:" class="color5">加密解密</a>
+            
+            <a href="javascript:" class="color4">大文本</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-13 11:50:24'>2019-09-30 18:07</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-15 17:10:16'>2019-10-13 11:37</time>
         
     </div>
     <div class="article-meta">
@@ -298,7 +304,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实施"><span class="toc-text">具体实施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实施"><span class="toc-text">具体实施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">准备工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">实施并验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用以上方式"><span class="toc-text">为什么采用以上方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用以上方式"><span class="toc-text">为什么采用以上方式</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -314,8 +320,94 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>由于进公司之后长期使用win10操作系统，在win10操作系统不停强制更新之后，终于在2019年8月电脑开始频繁蓝屏，几乎每天一次！<br>痛定思痛，决定放弃win10系统，采用win7作为主要操作系统，使用虚机的方式多系统联合作战。</p>
-<p>…….未完待续</p>
+        <table>
+<thead>
+<tr>
+<th align="center">版本号</th>
+<th align="center">作者</th>
+<th align="center">修改记录</th>
+<th align="center">完成日期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">v1.0</td>
+<td align="center">fiendo</td>
+<td align="center">v1.0</td>
+<td align="center">2019-10-15</td>
+</tr>
+</tbody></table>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><a href="#缘由">1.缘由</a></li>
+<li><a href="#目的">2.目的</a></li>
+<li><a href="#目的">3.具体实施</a><ul>
+<li><a href="#准备工具">3.1 准备工具</a></li>
+<li><a href="#实施并验证">3.2 实施并验证</a></li>
+</ul>
+</li>
+<li><a href="#为什么采用以上方式">4.为什么采用以上方式</a></li>
+</ul>
+<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a><h2>缘由</h2></h2><p>近期接到一个需求，需要从内网提取数据，数据是文本格式的，由于内网速度受限，<br>首先想到的就是压缩文件，于是研究了一下压缩文本传输的方式。</p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a><h2>目的</h2></h2><p>在Linux中对大本文文件进行压缩，并加密解密</p>
+<h2 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a><h2>具体实施</h2></h2><p><strong><h3>准备工具</h3></strong></p>
+<ul>
+<li>系统：centos7</li>
+<li>工具包: tar,openssl</li>
+<li>待处理的文件: test.txt (本文准备的文件大小在4G左右)</li>
+</ul>
+<p><strong><h3>实施并验证</h3></strong></p>
+<p>tar指令核心参数：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-j</td>
+<td align="center">以bzip2方式压缩</td>
+</tr>
+<tr>
+<td align="center">-z</td>
+<td align="center">以gzip方式压缩</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">建立新的备份文件</td>
+</tr>
+<tr>
+<td align="center">-f</td>
+<td align="center">指定备份文件</td>
+</tr>
+<tr>
+<td align="center">-v</td>
+<td align="center">显示指令执行过程</td>
+</tr>
+<tr>
+<td align="center">-x</td>
+<td align="center">从备份文件中还原文件</td>
+</tr>
+</tbody></table>
+<p><strong>1.使用tar进行压缩和解压</strong></p>
+<p>压缩： tar -jcvf ./test.tar.bz2 ./test.txt</p>
+<p>解压： tar -jxf ./test.tar.bz2</p>
+<p><strong>2.使用tar + openssl进行压缩和解压</strong></p>
+<p>压缩： tar -jcvf ./test.txt | openssl des3 -salt -k <password> -out ./test.tar.bz2</password></p>
+<p>解压： openssl des3 -d -k <password> -salt -in /test.tar.bz2 | tar jxf -</password></p>
+<h2 id="为什么采用以上方式"><a href="#为什么采用以上方式" class="headerlink" title="为什么采用以上方式"></a><h2>为什么采用以上方式</h2></h2><p><strong>采用bzip2</strong></p>
+<p>相对于gzip压缩速度慢，但压缩效果好</p>
+<p><strong>采用gzip</strong></p>
+<p>相对bzip2压缩速度快，但压缩效果差</p>
+<p><strong>对比实例</strong></p>
+<p>压缩981M的text.txt</p>
+<p><strong>gzip：</strong></p>
+<p>time tar  -zcvf ./test.tar.gz ./test.txt</p>
+<p>real    0m22.177s<br>user    0m21.874s<br>sys     0m1.006s</p>
+<p>99M test.tar.bz2</p>
+<p><strong>bzip2：</strong></p>
+<p>time tar -jcvf test.tar.bz2 ./test.txt</p>
+<p>real    3m1.416s<br>user    3m0.875s<br>sys     0m1.638s</p>
+<p>131M test.tar.gz</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 fiendo@foxmail.com </span>
@@ -329,12 +421,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>搭建自己的linux工作环境</p>
+    <p><span class="copy-title">文章标题:</span>大文本文件处理-Tar命令压缩_解压缩</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-09-30, 18:07:02</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-13, 11:50:24</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/30/搭建自己的linux工作环境/" title="搭建自己的linux工作环境">https://fiendoghx.github.io/2019/09/30/搭建自己的linux工作环境/</a>
+    <p><span class="copy-title">发布时间:</span>2019-10-13, 11:37:34</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-15, 17:10:16</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/13/大文本文件处理-tar命令压缩-解压缩/" title="大文本文件处理-Tar命令压缩_解压缩">https://fiendoghx.github.io/2019/10/13/大文本文件处理-tar命令压缩-解压缩/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
