@@ -330,7 +330,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-20 18:13:02'>2019-10-16 10:09</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-20 18:24:37'>2019-10-16 10:09</time>
         
     </div>
     <div class="article-meta">
@@ -387,7 +387,7 @@
 <li><a href="#3-2实施并验证">3.2 实施并验证</a><ul>
 <li><a href="#3-2-1设置虚机dns">3.2.1 设置虚机dns</a></li>
 <li><a href="#3-2-2使用maven打包各服务">3.2.2 使用maven打包各服务</a></li>
-<li><a href="#3-2-3按照一定顺序执行run.sh">3.2.3 按照一定顺序执行run.sh</a><ul>
+<li><a href="#3-2-3按照一定顺序执行run-sh">3.2.3 按照一定顺序执行run.sh</a><ul>
 <li><a href="#3-2-3-1启动注册中心">3.2.3.1 启动注册中心</a></li>
 <li><a href="#3-2-3-2启动Zuul网关">3.2.3.2 启动Zuul网关</a></li>
 <li><a href="#3-2-3-3启动HelloWorld服务">3.2.3.3 启动HelloWorld服务</a></li>
@@ -453,22 +453,22 @@
 <p><strong>验证结果</strong></p>
 <p>登陆server1的<a href="http://192.168.1.150:12001/" target="_blank" rel="noopener">Eureka</a>，由于配置了Security，需要用户名密码，可以在配置文件查看 <a href="https://github.com/fiendoghx/spring-cloud-frame/blob/base-springboot1/base-eureka/src/main/resources/application.yml" target="_blank" rel="noopener">点击查看</a></p>
 <p>若无异常会看到有两个Eureka节点已经启动</p>
-<p><img src="./img/article/springcloudeureka01.png" alt="Eureka"></p>
+<p><img src="/img/article/springcloudeureka01.png" alt="Eureka"></p>
 <h3 id="3-2-3-2启动Zuul网关"><a href="#3-2-3-2启动Zuul网关" class="headerlink" title="3.2.3.2启动Zuul网关"></a>3.2.3.2启动Zuul网关</h3><p><strong>登陆各虚机启动Zuul</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#登陆spring-cloud-01启动zuul</span><br><span class="line">cd /home/fiendo/spring-cloud-frame/zuul/bin</span><br><span class="line">./run.sh start</span><br><span class="line">#登陆spring-cloud-02启动zuul</span><br><span class="line">cd /home/fiendo/spring-cloud-frame/zuul/bin</span><br><span class="line">./run.sh start</span><br></pre></td></tr></table></figure>
 
 <p><strong>验证结果</strong></p>
 <p>若无异常会看到有两个Zuul节点已经启动</p>
-<p><img src="./img/article/springcloudzuul01.png" alt="Eureka"></p>
+<p><img src="/img/article/springcloudzuul01.png" alt="Eureka"></p>
 <h3 id="3-2-3-3启动HelloWorld服务"><a href="#3-2-3-3启动HelloWorld服务" class="headerlink" title="3.2.3.3启动HelloWorld服务"></a>3.2.3.3启动HelloWorld服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#登陆spring-cloud-01启动service-helloworld</span><br><span class="line">cd /home/fiendo/spring-cloud-frame/service-helloworld/bin</span><br><span class="line">./run.sh start</span><br><span class="line">#登陆spring-cloud-02启动service-helloworld</span><br><span class="line">cd /home/fiendo/spring-cloud-frame/service-helloworld/bin</span><br><span class="line">./run.sh start</span><br></pre></td></tr></table></figure>
 
 <p><strong>验证结果</strong></p>
 <p>若无异常会看到有两个service-helloworld节点已经启动</p>
-<p><img src="./img/article/springcloudhelloworld01.png" alt="Eureka"></p>
+<p><img src="/img/article/springcloudhelloworld01.png" alt="Eureka"></p>
 <p><strong>通过Zuul网关访问Hello-World微服务</strong></p>
 <p>本文采用Zuul网关来控制各个服务的访问，路由采用默认配置，也就是说访问url为：http://&lt;网关host&gt;/&lt;服务名&gt;/<api></api></p>
 <p>访问具体服务 <a href="http://192.168.1.150:12002/service-helloworld/helloworld" target="_blank" rel="noopener">http://192.168.1.150:12002/service-helloworld/helloworld</a></p>
-<p><img src="./img/article/springcloudhelloworld02.png" alt="HelloWorld"></p>
+<p><img src="/img/article/springcloudhelloworld02.png" alt="HelloWorld"></p>
 <p><strong>至此我们就已经搭建完毕一套分布式的微服务基础框架</strong></p>
 <h2 id="4-相关说明"><a href="#4-相关说明" class="headerlink" title="4.相关说明"></a>4.相关说明</h2><p>本文基于springboot1搭建的微服务，最初spring-cloud官方给出的方案就是eureka+zuul,本文也是根据最初的方案进行搭建。直到spring-boot2之后迟迟等不到zuul2的更新，才开始出现的gateway，具体springboot2搭建，移步<a href="https://fiendoghx.github.io/2019/10/20/Spring-Cloud%E5%9F%BA%E7%A1%80%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA(springboot2)/">传送门</a></p>
 <h2 id="5-FQA"><a href="#5-FQA" class="headerlink" title="5.FQA"></a>5.FQA</h2><h3 id="5-1Eureka在不同虚机为什么要采用不同配置"><a href="#5-1Eureka在不同虚机为什么要采用不同配置" class="headerlink" title="5.1Eureka在不同虚机为什么要采用不同配置?"></a>5.1Eureka在不同虚机为什么要采用不同配置?</h3><p>由于注册中心本身是相互注册的，不会注册到自己本身，所以不同配置其实是除去了自身，添加其他的注册中心地址而已，类似Zookeeper。</p>
@@ -486,7 +486,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-16, 10:09:55</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-20, 18:13:02</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-20, 18:24:37</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/16/Spring-Cloud基础微服务搭建/" title="Spring-Cloud基础微服务搭建(springboot1)">https://fiendoghx.github.io/2019/10/16/Spring-Cloud基础微服务搭建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
