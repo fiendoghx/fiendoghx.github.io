@@ -6,14 +6,18 @@
   <meta name="keywords" content=" sendi ">
   <meta name="description" content="小组分享记录(持续更新) | 老龚的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://fiendoghx.github.io/about/index.html">
+<meta name="description" content="目录 1.缘由 2.目的 3.具体实施 3.1 事前准备 3.2 实施并验证 3.2.1 设置虚机dns 3.2.2 使用maven打包各服务 3.2.3 按照一定顺序执行run.sh 3.2.3.1 启动注册中心 3.2.3.2 启动Zuul网关 3.2.3.3 启动HelloWorld服务       4.相关说明 5.FQA  //todo">
+<meta name="keywords" content="spring-cloud,微服务,框架搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-Cloud基础微服务搭建(springboot2)">
+<meta property="og:url" content="https://fiendoghx.github.io/2019/10/20/Spring-Cloud基础微服务搭建-springboot2/index.html">
 <meta property="og:site_name" content="老龚的博客">
+<meta property="og:description" content="目录 1.缘由 2.目的 3.具体实施 3.1 事前准备 3.2 实施并验证 3.2.1 设置虚机dns 3.2.2 使用maven打包各服务 3.2.3 按照一定顺序执行run.sh 3.2.3.1 启动注册中心 3.2.3.2 启动Zuul网关 3.2.3.3 启动HelloWorld服务       4.相关说明 5.FQA  //todo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-30T08:29:29.816Z">
+<meta property="og:updated_time" content="2019-10-20T10:13:10.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
+<meta name="twitter:title" content="Spring-Cloud基础微服务搭建(springboot2)">
+<meta name="twitter:description" content="目录 1.缘由 2.目的 3.具体实施 3.1 事前准备 3.2 实施并验证 3.2.1 设置虚机dns 3.2.2 使用maven打包各服务 3.2.3 按照一定顺序执行run.sh 3.2.3.1 启动注册中心 3.2.3.2 启动Zuul网关 3.2.3.3 启动HelloWorld服务       4.相关说明 5.FQA  //todo">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -326,7 +330,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-20 18:18:13'>2019-10-16 19:51</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-23 18:40:02'>2019-10-16 19:51</time>
         
     </div>
     <div class="article-meta">
@@ -359,7 +363,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#记录"><span class="toc-text">记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-10-16"><span class="toc-text">2019-10-16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-10-9"><span class="toc-text">2019-10-9</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实施"><span class="toc-text">具体实施</span></a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#记录"><span class="toc-text">记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-10-23"><span class="toc-text">2019-10-23</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-10-16"><span class="toc-text">2019-10-16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019-10-9"><span class="toc-text">2019-10-9</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实施"><span class="toc-text">具体实施</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -381,7 +385,9 @@
 <li><a href="#目的">3.目的</a></li>
 <li><a href="#具体实施">4.具体实施</a></li>
 </ul>
-<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><h3 id="2019-10-16"><a href="#2019-10-16" class="headerlink" title="2019-10-16"></a>2019-10-16</h3><p>讨论分享会执行方式</p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><h3 id="2019-10-23"><a href="#2019-10-23" class="headerlink" title="2019-10-23"></a>2019-10-23</h3><p>确定11-6 由小F同学分享”jsp和html相关知识”</p>
+<p>小S同学分享”redis基础知识以及单节点/集群部署”</p>
+<h3 id="2019-10-16"><a href="#2019-10-16" class="headerlink" title="2019-10-16"></a>2019-10-16</h3><p>讨论分享会执行方式</p>
 <p>确定10-23 由小S同学分享”redis基础知识以及单节点/集群部署”</p>
 <p>确定10-30 由小Q和小H同学分享”VoLTE告警派单整体流程”</p>
 <h3 id="2019-10-9"><a href="#2019-10-9" class="headerlink" title="2019-10-9"></a>2019-10-9</h3><p>确定每周三进行分享会</p>
@@ -409,7 +415,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-16, 19:51:57</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-20, 18:18:13</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-23, 18:40:02</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/16/小组分享记录/" title="小组分享记录(持续更新)">https://fiendoghx.github.io/2019/10/16/小组分享记录/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
