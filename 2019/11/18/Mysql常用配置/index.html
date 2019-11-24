@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>大文本文件处理-Tar命令压缩_解压缩 | 老龚的博客</title>
-  <meta name="keywords" content=" Linux , Tar , 压缩解压缩 , 加密解密 , 大文本 ">
-  <meta name="description" content="大文本文件处理-Tar命令压缩_解压缩 | 老龚的博客">
+  <title>Mysql常用配置 | 老龚的博客</title>
+  <meta name="keywords" content=" 配置 ">
+  <meta name="description" content="Mysql常用配置 | 老龚的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="目录 1.缘由 2.目的 3.具体实施 3.1 事前准备 3.2 实施并验证   4.为什么采用以上方式  1.缘由工作中遇到老项目写的jsp采用了较多EL表达式导致无法前后分离，需要替代掉EL表达式，转化为html后再进行前后分离。 2.目的能把包含EL表达式的JSP转化为HTML 3.具体实施采用HandleBar前端插件替换EL表达式。 3.1事前准备HandleBar基础用法 3.2实施并">
 <meta name="keywords" content="JSP,EL表达式">
@@ -386,9 +386,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-大文本文件处理-tar命令压缩-解压缩" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Mysql常用配置" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">大文本文件处理-Tar命令压缩_解压缩</h1>
+        <h1 class="article-title">Mysql常用配置</h1>
     
     <div class="article-meta">
         
@@ -396,29 +396,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="工具">工具</a>
+                <a href="javascript:" data-rel="Mysql">Mysql</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">Linux</a>
-            
-            <a href="javascript:" class="color4">Tar</a>
-            
-            <a href="javascript:" class="color1">压缩解压缩</a>
-            
-            <a href="javascript:" class="color5">加密解密</a>
-            
-            <a href="javascript:" class="color4">大文本</a>
+            <a href="javascript:" class="color3">配置</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-20 18:17:37'>2019-10-13 11:37</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-18 18:08:42'>2019-11-18 11:33</time>
         
     </div>
     <div class="article-meta">
@@ -451,7 +443,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实施"><span class="toc-text">具体实施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工具"><span class="toc-text">准备工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实施并验证"><span class="toc-text">实施并验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用以上方式"><span class="toc-text">为什么采用以上方式</span></a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-缘由"><span class="toc-text">1.缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-目的"><span class="toc-text">2.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-具体实施"><span class="toc-text">3.具体实施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1事前准备"><span class="toc-text">3.1事前准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2实施并验证"><span class="toc-text">3.2实施并验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-为什么采用以上方式"><span class="toc-text">4.为什么采用以上方式</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -468,76 +460,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li><a href="#缘由">1.缘由</a></li>
-<li><a href="#目的">2.目的</a></li>
-<li><a href="#目的">3.具体实施</a><ul>
-<li><a href="#准备工具">3.1 准备工具</a></li>
-<li><a href="#实施并验证">3.2 实施并验证</a></li>
+<li><a href="#1-缘由">1.缘由</a></li>
+<li><a href="#2-目的">2.目的</a></li>
+<li><a href="#3-具体实施">3.具体实施</a><ul>
+<li><a href="#3-1事前准备">3.1 事前准备</a></li>
+<li><a href="#3-2实施并验证">3.2 实施并验证</a></li>
 </ul>
 </li>
-<li><a href="#为什么采用以上方式">4.为什么采用以上方式</a></li>
+<li><a href="#4-为什么采用以上方式">4.为什么采用以上方式</a></li>
 </ul>
-<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>近期接到一个需求，需要从内网提取数据，数据是文本格式的，由于内网速度受限，<br>首先想到的就是压缩文件，于是研究了一下压缩文本传输的方式。</p>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在Linux中对大本文文件进行压缩，并加密解密</p>
-<h2 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a>具体实施</h2><h2 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h2><ul>
-<li>系统：centos7</li>
-<li>工具包: tar,openssl</li>
-<li>待处理的文件: test.txt (本文准备的文件大小在4G左右)</li>
-</ul>
-<h2 id="实施并验证"><a href="#实施并验证" class="headerlink" title="实施并验证"></a>实施并验证</h2><p>tar指令核心参数：</p>
-<table>
-<thead>
-<tr>
-<th align="center">参数</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-j</td>
-<td align="center">以bzip2方式压缩</td>
-</tr>
-<tr>
-<td align="center">-z</td>
-<td align="center">以gzip方式压缩</td>
-</tr>
-<tr>
-<td align="center">-c</td>
-<td align="center">建立新的备份文件</td>
-</tr>
-<tr>
-<td align="center">-f</td>
-<td align="center">指定备份文件</td>
-</tr>
-<tr>
-<td align="center">-v</td>
-<td align="center">显示指令执行过程</td>
-</tr>
-<tr>
-<td align="center">-x</td>
-<td align="center">从备份文件中还原文件</td>
-</tr>
-</tbody></table>
-<p><strong>1.使用tar进行压缩和解压</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">压缩： tar -jcvf ./test.tar.bz2 ./test.txt</span><br><span class="line"></span><br><span class="line">解压： tar -jxf ./test.tar.bz2</span><br></pre></td></tr></table></figure>
+<h2 id="1-缘由"><a href="#1-缘由" class="headerlink" title="1.缘由"></a>1.缘由</h2><h2 id="2-目的"><a href="#2-目的" class="headerlink" title="2.目的"></a>2.目的</h2><h2 id="3-具体实施"><a href="#3-具体实施" class="headerlink" title="3.具体实施"></a>3.具体实施</h2><h3 id="3-1事前准备"><a href="#3-1事前准备" class="headerlink" title="3.1事前准备"></a>3.1事前准备</h3><h3 id="3-2实施并验证"><a href="#3-2实施并验证" class="headerlink" title="3.2实施并验证"></a>3.2实施并验证</h3><p><strong>具体配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">socket=/usr/local/var/mysql.sock</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">bind-address=0.0.0.0</span><br><span class="line">port=3306</span><br><span class="line">datadir=/data/mysql/</span><br><span class="line">socket=/usr/local/var/mysql.sock</span><br><span class="line">log_bin=/data/mysql/mysql-bin</span><br><span class="line">expire_logs_days=7</span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line"></span><br><span class="line">max-connections=2048</span><br><span class="line">max_connect_errors=500</span><br><span class="line">max_allowed_packet=16M</span><br><span class="line">open-files-limit=65536</span><br><span class="line"></span><br><span class="line">character-set-server=utf8</span><br><span class="line">default-storage-engine=InnoDB</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION</span><br><span class="line"></span><br><span class="line">server-id=1</span><br><span class="line"></span><br><span class="line">innodb_data_home_dir=/data/mysql/</span><br><span class="line">innodb_file_per_table=1</span><br><span class="line">innodb_open_files=4096</span><br><span class="line">table_open_cache=4096</span><br><span class="line"></span><br><span class="line">#Forced autoinc locking</span><br><span class="line">binlog_format=row</span><br><span class="line">innodb_autoinc_lock_mode=2</span><br><span class="line"></span><br><span class="line">#load data</span><br><span class="line">innodb_buffer_pool_size=62G</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">innodb_log_buffer_size=16M</span><br><span class="line">innodb_log_file_size=256M</span><br><span class="line">innodb_log_files_in_group=8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line">log_bin=/data/mysql/mysql-bin</span><br><span class="line">expire_logs_days=7</span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br></pre></td></tr></table></figure>
 
-<p><strong>2.使用tar + openssl进行压缩和解压</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">压缩： tar -jcvf ./test.txt | openssl des3 -salt -k &lt;password&gt; -out ./test.tar.bz2</span><br><span class="line"></span><br><span class="line">解压： openssl des3 -d -k &lt;password&gt; -salt -in /test.tar.bz2 | tar jxf -</span><br></pre></td></tr></table></figure>
-
-<h2 id="为什么采用以上方式"><a href="#为什么采用以上方式" class="headerlink" title="为什么采用以上方式"></a>为什么采用以上方式</h2><p><strong>采用bzip2</strong></p>
-<p>相对于gzip压缩速度慢，但压缩效果好</p>
-<p><strong>采用gzip</strong></p>
-<p>相对bzip2压缩速度快，但压缩效果差</p>
-<p><strong>对比实例</strong></p>
-<p>压缩981M的text.txt</p>
-<p><strong>gzip：</strong></p>
-<p>time tar  -zcvf ./test.tar.gz ./test.txt</p>
-<p>real    0m22.177s<br>user    0m21.874s<br>sys     0m1.006s</p>
-<p>131M test.tar.gz</p>
-<p><strong>bzip2：</strong></p>
-<p>time tar -jcvf test.tar.bz2 ./test.txt</p>
-<p>real    3m1.416s<br>user    3m0.875s<br>sys     0m1.638s</p>
-<p>99M test.tar.bz2</p>
-
+<h2 id="4-为什么采用以上方式"><a href="#4-为什么采用以上方式" class="headerlink" title="4.为什么采用以上方式"></a>4.为什么采用以上方式</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 fiendo@foxmail.com </span>
     </div>
@@ -546,12 +481,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>大文本文件处理-Tar命令压缩_解压缩</p>
+    <p><span class="copy-title">文章标题:</span>Mysql常用配置</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-10-13, 11:37:34</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-20, 18:17:37</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/13/大文本文件处理-tar命令压缩-解压缩/" title="大文本文件处理-Tar命令压缩_解压缩">https://fiendoghx.github.io/2019/10/13/大文本文件处理-tar命令压缩-解压缩/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-18, 11:33:03</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-18, 18:08:42</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/18/Mysql常用配置/" title="Mysql常用配置">https://fiendoghx.github.io/2019/11/18/Mysql常用配置/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

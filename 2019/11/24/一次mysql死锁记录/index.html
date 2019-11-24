@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>大文本文件处理-Tar命令压缩_解压缩 | 老龚的博客</title>
-  <meta name="keywords" content=" Linux , Tar , 压缩解压缩 , 加密解密 , 大文本 ">
-  <meta name="description" content="大文本文件处理-Tar命令压缩_解压缩 | 老龚的博客">
+  <title>一次mysql死锁记录 | 老龚的博客</title>
+  <meta name="keywords" content=" Mysql , 死锁 ">
+  <meta name="description" content="一次mysql死锁记录 | 老龚的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="目录 1.缘由 2.目的 3.具体实施 3.1 事前准备 3.2 实施并验证   4.为什么采用以上方式  1.缘由工作中遇到老项目写的jsp采用了较多EL表达式导致无法前后分离，需要替代掉EL表达式，转化为html后再进行前后分离。 2.目的能把包含EL表达式的JSP转化为HTML 3.具体实施采用HandleBar前端插件替换EL表达式。 3.1事前准备HandleBar基础用法 3.2实施并">
 <meta name="keywords" content="JSP,EL表达式">
@@ -386,9 +386,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-大文本文件处理-tar命令压缩-解压缩" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-一次mysql死锁记录" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">大文本文件处理-Tar命令压缩_解压缩</h1>
+        <h1 class="article-title">一次mysql死锁记录</h1>
     
     <div class="article-meta">
         
@@ -396,29 +396,23 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="工具">工具</a>
+                <a href="javascript:" data-rel="Mysql">Mysql</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">Linux</a>
+            <a href="javascript:" class="color1">Mysql</a>
             
-            <a href="javascript:" class="color4">Tar</a>
-            
-            <a href="javascript:" class="color1">压缩解压缩</a>
-            
-            <a href="javascript:" class="color5">加密解密</a>
-            
-            <a href="javascript:" class="color4">大文本</a>
+            <a href="javascript:" class="color3">死锁</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-10-20 18:17:37'>2019-10-13 11:37</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-24 18:23:10'>2019-11-24 16:51</time>
         
     </div>
     <div class="article-meta">
@@ -451,7 +445,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缘由"><span class="toc-text">缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实施"><span class="toc-text">具体实施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工具"><span class="toc-text">准备工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实施并验证"><span class="toc-text">实施并验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么采用以上方式"><span class="toc-text">为什么采用以上方式</span></a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-缘由"><span class="toc-text">1.缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-目的"><span class="toc-text">2.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-具体过程"><span class="toc-text">3.具体过程</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -468,75 +462,78 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li><a href="#缘由">1.缘由</a></li>
-<li><a href="#目的">2.目的</a></li>
-<li><a href="#目的">3.具体实施</a><ul>
-<li><a href="#准备工具">3.1 准备工具</a></li>
-<li><a href="#实施并验证">3.2 实施并验证</a></li>
+<li><a href="#1-缘由">1.缘由</a></li>
+<li><a href="#2-目的">2.目的</a></li>
+<li><a href="#3-具体过程">3.具体过程</a></li>
 </ul>
-</li>
-<li><a href="#为什么采用以上方式">4.为什么采用以上方式</a></li>
-</ul>
-<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>近期接到一个需求，需要从内网提取数据，数据是文本格式的，由于内网速度受限，<br>首先想到的就是压缩文件，于是研究了一下压缩文本传输的方式。</p>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在Linux中对大本文文件进行压缩，并加密解密</p>
-<h2 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a>具体实施</h2><h2 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h2><ul>
-<li>系统：centos7</li>
-<li>工具包: tar,openssl</li>
-<li>待处理的文件: test.txt (本文准备的文件大小在4G左右)</li>
-</ul>
-<h2 id="实施并验证"><a href="#实施并验证" class="headerlink" title="实施并验证"></a>实施并验证</h2><p>tar指令核心参数：</p>
+<h2 id="1-缘由"><a href="#1-缘由" class="headerlink" title="1.缘由"></a>1.缘由</h2><p>由于一次数据库迁移，新的数据库以5.7.25版本安装，但以前的入库程序每次跑不了一天，一定会出现挂死的情况，排查后发现死锁，尝试了几种解决办法，做下记录</p>
+<h2 id="2-目的"><a href="#2-目的" class="headerlink" title="2.目的"></a>2.目的</h2><p>提醒自己以后在使用Mysql时，要考虑到各个版本和锁机制的使用，避免出现死锁的情况</p>
+<h2 id="3-具体过程"><a href="#3-具体过程" class="headerlink" title="3.具体过程"></a>3.具体过程</h2><p>Mysql版本: 5.7.25</p>
+<p>发生死锁的表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `table_example` (</span><br><span class="line">  `dname` varchar(100) DEFAULT &apos;&apos;,</span><br><span class="line">  `subname` varchar(100) DEFAULT &apos;&apos;,</span><br><span class="line">  `data2` varchar(100) DEFAULT &apos;&apos;,</span><br><span class="line">  `data3` varchar(100) DEFAULT &apos;&apos;,</span><br><span class="line">  `capturetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  KEY `subname` (`subname`),</span><br><span class="line">  KEY `capturetime` (`capturetime`),</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+
+<p>产生死锁的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOAD DATA LOCAL INFILE &apos;/data/20191124/data.tmp&apos;  INTO TABLE table_example </span><br><span class="line">FIELDS TERMINATED BY &apos;;&apos; (dname,subname,data2,data3,capturetime)</span><br></pre></td></tr></table></figure>
+
+<p><strong>怎么发现死锁的</strong></p>
+<p>执行sql运行情况检索非sleep状态的sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show OPEN TABLES where In_use &gt; 0;</span><br><span class="line">select id, db, user, host, command, time, state, info from </span><br><span class="line">information_schema.processlist where command != &apos;Sleep&apos;  order by time desc;</span><br></pre></td></tr></table></figure>
+
+<p>检查到很多执行时间很长的sql</p>
+<p>再执行Innodb死锁检测</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show engine innodb status;</span><br></pre></td></tr></table></figure>
+
+<p>查到LATEST DETECTED DEADLOCK可以看到最近一次死锁记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">------------------------</span><br><span class="line">LATEST DETECTED DEADLOCK</span><br><span class="line">------------------------</span><br><span class="line">2019-11-18 15:38:35 0x7fca119b8700</span><br><span class="line">*** (1) TRANSACTION:</span><br><span class="line">TRANSACTION 72276684, ACTIVE 0 sec inserting</span><br><span class="line">mysql tables in use 1, locked 1</span><br><span class="line">LOCK WAIT 18 lock struct(s), heap size 1136, 4 row lock(s)</span><br><span class="line">MySQL thread id 813, OS thread handle 140505857419008, query id 46012 127.0.0.1 test executing</span><br><span class="line">LOAD DATA LOCAL INFILE &apos;/data/20191124/data.tmp&apos;  INTO TABLE table_example </span><br><span class="line">FIELDS TERMINATED BY &apos;;&apos; (dname,subname,data2,data3,capturetime)</span><br><span class="line">*** (1) WAITING FOR THIS LOCK TO BE GRANTED:</span><br><span class="line">RECORD LOCKS space id 5819 page no 171968 n bits 200 index GEN_CLUST_INDEX of table `voltedata_volte`.`volte_rrd_data_20191118` trx id 72276684 lock_mode X insert intention waiting</span><br><span class="line">Record lock, heap no 1 PHYSICAL RECORD: n_fields 1; compact format; info bits 0</span><br><span class="line"> 0: len 8; hex 73757072656d756d; asc supremum;;</span><br><span class="line"></span><br><span class="line">*** (2) TRANSACTION:</span><br><span class="line">TRANSACTION 72276687, ACTIVE 0 sec inserting</span><br><span class="line">mysql tables in use 1, locked 1</span><br><span class="line">16 lock struct(s), heap size 1136, 4 row lock(s)</span><br><span class="line">MySQL thread id 977, OS thread handle 140505855526656, query id 46014 127.0.0.1 test executing</span><br><span class="line">LOAD DATA LOCAL INFILE &apos;/data/20191124/data2.tmp&apos;  INTO TABLE table_example </span><br><span class="line">FIELDS TERMINATED BY &apos;;&apos; (dname,subname,data2,data3,capturetime)</span><br><span class="line">*** (2) HOLDS THE LOCK(S):</span><br><span class="line">RECORD LOCKS space id 5819 page no 171968 n bits 200 index GEN_CLUST_INDEX of table `voltedata_volte`.`volte_rrd_data_20191118` trx id 72276687 lock_mode X</span><br><span class="line">Record lock, heap no 1 PHYSICAL RECORD: n_fields 1; compact format; info bits 0</span><br><span class="line"> 0: len 8; hex 73757072656d756d; asc supremum;;</span><br><span class="line"></span><br><span class="line">*** (2) WAITING FOR THIS LOCK TO BE GRANTED:</span><br><span class="line">RECORD LOCKS space id 5819 page no 171968 n bits 200 index GEN_CLUST_INDEX of table `voltedata_volte`.`volte_rrd_data_20191118` trx id 72276687 lock_mode X insert intention waiting</span><br><span class="line">Record lock, heap no 1 PHYSICAL RECORD: n_fields 1; compact format; info bits 0</span><br><span class="line"> 0: len 8; hex 73757072656d756d; asc supremum;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析死锁原因</strong></p>
+<p>从死锁记录能够看出，主要问题是两个事务相互等待GEN_CLUST_INDEX的S(共享)锁和IX(意向插入)锁导致死锁。</p>
+<p><img src="./img/article/dead_lock01.png" alt></p>
+<p>由于S锁和IX锁是互斥的，所以发生申请IX锁时会进入队列，而两个事务申请先后不同，事务2先获取了S锁，所以事务1在申请IX锁时需要事务2释放S锁，而事务2又因为申请IX锁需要等待事务1先释放IX锁，形成了相互等待的情况，于是死锁。</p>
+<p><strong>锁类型是否能共存</strong></p>
 <table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">说明</th>
+<th align="center">type</th>
+<th align="center">X</th>
+<th align="center">IX</th>
+<th align="center">S</th>
+<th align="center">IS</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">-j</td>
-<td align="center">以bzip2方式压缩</td>
+<td align="center">X</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
 </tr>
 <tr>
-<td align="center">-z</td>
-<td align="center">以gzip方式压缩</td>
+<td align="center">IX</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">√</td>
 </tr>
 <tr>
-<td align="center">-c</td>
-<td align="center">建立新的备份文件</td>
+<td align="center">S</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
 </tr>
 <tr>
-<td align="center">-f</td>
-<td align="center">指定备份文件</td>
-</tr>
-<tr>
-<td align="center">-v</td>
-<td align="center">显示指令执行过程</td>
-</tr>
-<tr>
-<td align="center">-x</td>
-<td align="center">从备份文件中还原文件</td>
+<td align="center">IS</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
 </tr>
 </tbody></table>
-<p><strong>1.使用tar进行压缩和解压</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">压缩： tar -jcvf ./test.tar.bz2 ./test.txt</span><br><span class="line"></span><br><span class="line">解压： tar -jxf ./test.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p><strong>2.使用tar + openssl进行压缩和解压</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">压缩： tar -jcvf ./test.txt | openssl des3 -salt -k &lt;password&gt; -out ./test.tar.bz2</span><br><span class="line"></span><br><span class="line">解压： openssl des3 -d -k &lt;password&gt; -salt -in /test.tar.bz2 | tar jxf -</span><br></pre></td></tr></table></figure>
-
-<h2 id="为什么采用以上方式"><a href="#为什么采用以上方式" class="headerlink" title="为什么采用以上方式"></a>为什么采用以上方式</h2><p><strong>采用bzip2</strong></p>
-<p>相对于gzip压缩速度慢，但压缩效果好</p>
-<p><strong>采用gzip</strong></p>
-<p>相对bzip2压缩速度快，但压缩效果差</p>
-<p><strong>对比实例</strong></p>
-<p>压缩981M的text.txt</p>
-<p><strong>gzip：</strong></p>
-<p>time tar  -zcvf ./test.tar.gz ./test.txt</p>
-<p>real    0m22.177s<br>user    0m21.874s<br>sys     0m1.006s</p>
-<p>131M test.tar.gz</p>
-<p><strong>bzip2：</strong></p>
-<p>time tar -jcvf test.tar.bz2 ./test.txt</p>
-<p>real    3m1.416s<br>user    3m0.875s<br>sys     0m1.638s</p>
-<p>99M test.tar.bz2</p>
+<p>GEN_CLUST_INDEX 是在对一张表进行update操作，没能找到对应唯一主键时，mysql生成的一张隐式索引表，我们这里遇到的就是这种情况，没有唯一主键。</p>
+<p><strong>解决</strong></p>
+<p>1.由于这张表平时并发入库并不多，主要是用作查询，最后把引擎换成MyISAM之后就解决了。</p>
+<p>2.还有一种解决方式是降低了mysql版本到5.6.37。具体为什么降低到5.6.37之后没有死锁问题，没有具体深究。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 fiendo@foxmail.com </span>
@@ -546,12 +543,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>大文本文件处理-Tar命令压缩_解压缩</p>
+    <p><span class="copy-title">文章标题:</span>一次mysql死锁记录</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-10-13, 11:37:34</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-20, 18:17:37</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/13/大文本文件处理-tar命令压缩-解压缩/" title="大文本文件处理-Tar命令压缩_解压缩">https://fiendoghx.github.io/2019/10/13/大文本文件处理-tar命令压缩-解压缩/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-24, 16:51:49</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-24, 18:23:10</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/24/一次mysql死锁记录/" title="一次mysql死锁记录">https://fiendoghx.github.io/2019/11/24/一次mysql死锁记录/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
