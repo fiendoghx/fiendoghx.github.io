@@ -414,7 +414,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-09 17:24:09'>2019-10-20 17:15</time>
+        创建时间:<time class="date" title='更新时间: 2019-12-03 20:06:16'>2019-10-20 17:15</time>
         
     </div>
     <div class="article-meta">
@@ -447,7 +447,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-缘由"><span class="toc-text">1.缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-目的"><span class="toc-text">2.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-具体实施"><span class="toc-text">3.具体实施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1事前准备"><span class="toc-text">3.1事前准备</span></a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-缘由"><span class="toc-text">1.缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-目的"><span class="toc-text">2.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-具体实施"><span class="toc-text">3.具体实施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1事前准备"><span class="toc-text">3.1事前准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2实施并验证"><span class="toc-text">3.2实施并验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1使用maven打包各服务"><span class="toc-text">3.2.1使用maven打包各服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-按照一定顺序启动各服务"><span class="toc-text">3.2.2 按照一定顺序启动各服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-访问接口验证"><span class="toc-text">3.2.3 访问接口验证</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -469,14 +469,8 @@
 <li><a href="#3-目的">3.具体实施</a><ul>
 <li><a href="#3-1事前准备">3.1 事前准备</a></li>
 <li><a href="#3-2实施并验证">3.2 实施并验证</a><ul>
-<li><a href="#3-2-1设置虚机dns">3.2.1 设置虚机dns</a></li>
-<li><a href="#3-2-2使用maven打包各服务">3.2.2 使用maven打包各服务</a></li>
-<li><a href="#3-2-3按照一定顺序执行run.sh">3.2.3 按照一定顺序执行run.sh</a><ul>
-<li><a href="#3-2-3-1启动注册中心">3.2.3.1 启动注册中心</a></li>
-<li><a href="#3-2-3-2启动Zuul网关">3.2.3.2 启动Zuul网关</a></li>
-<li><a href="#3-2-3-3启动HelloWorld服务">3.2.3.3 启动HelloWorld服务</a></li>
-</ul>
-</li>
+<li><a href="#3-2-1使用maven打包各服务">3.2.1 使用maven打包各服务</a></li>
+<li><a href="#3-2-2按照一定顺序启动各服务">3.2.2 按照一定顺序启动各服务</a></li>
 </ul>
 </li>
 </ul>
@@ -484,15 +478,14 @@
 <li><a href="#4-相关说明">4.相关说明</a></li>
 <li><a href="#5-FQA">5.FQA</a></li>
 </ul>
-<h2 id="1-缘由"><a href="#1-缘由" class="headerlink" title="1.缘由"></a>1.缘由</h2><p>之前写过一次springboot1的简单服务搭建，这次完善一下springboot2的搭建方式。</p>
+<h2 id="1-缘由"><a href="#1-缘由" class="headerlink" title="1.缘由"></a>1.缘由</h2><p>之前写过springboot1的简单服务搭建，这次完善一下springboot2的搭建方式。</p>
 <p>之前写的springboot1是采用两台虚拟机来做的，本次使用单机不同端口来做，可用于测试环境。需要多节点的可以移步<a href="https://fiendoghx.github.io/2019/10/16/Spring-Cloud%E5%9F%BA%E7%A1%80%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">springboot1</a></p>
 <h2 id="2-目的"><a href="#2-目的" class="headerlink" title="2.目的"></a>2.目的</h2><p>能够根据文档搭建一套简单的微服务框架，并成功访问具体微服务。</p>
-<h2 id="3-具体实施"><a href="#3-具体实施" class="headerlink" title="3.具体实施"></a>3.具体实施</h2><p>spring-boot版本：1.5.19.RELEASE</p>
-<h2 id="3-1事前准备"><a href="#3-1事前准备" class="headerlink" title="3.1事前准备"></a>3.1事前准备</h2><ul>
-<li>centos虚拟服务器2台: 192.168.1.150/151<br><a href="https://wiki.centos.org/Download" target="_blank" rel="noopener">centos_download</a></li>
-<li>centos虚拟服务器<br><a href="https://www.oracle.com/technetwork/java/archive-139210.html" target="_blank" rel="noopener">Jdk8</a></li>
+<h2 id="3-具体实施"><a href="#3-具体实施" class="headerlink" title="3.具体实施"></a>3.具体实施</h2><p>spring-boot版本：2.1.9.RELEASE</p>
+<h2 id="3-1事前准备"><a href="#3-1事前准备" class="headerlink" title="3.1事前准备"></a>3.1事前准备</h2><p><a href="https://www.oracle.com/technetwork/java/archive-139210.html" target="_blank" rel="noopener">Jdk8</a></p>
+<ul>
 <li>开发环境工具：<br><a href="https://maven.apache.org/" target="_blank" rel="noopener">maven3+</a> \ <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
-<li>spring-cloud-frame工程:<br><a href="https://github.com/fiendoghx/spring-cloud-frame/tree/base-springboot1" target="_blank" rel="noopener">下载demo工程</a></li>
+<li>spring-cloud-frame工程:<br><a href="https://github.com/fiendoghx/spring-cloud-frame/tree/base-springboot2" target="_blank" rel="noopener">下载demo工程</a></li>
 </ul>
 <p>PS: demo工程配置了哪些内容：</p>
 <ol>
@@ -503,7 +496,11 @@
 <li>配置了logback日志info于warn、error分开按日期存放</li>
 </ol>
 <p>服务器以及构建工具的事前准备不在本文讨论范围，请自行搜索准备</p>
-<p>//todo</p>
+<h2 id="3-2实施并验证"><a href="#3-2实施并验证" class="headerlink" title="3.2实施并验证"></a>3.2实施并验证</h2><h3 id="3-2-1使用maven打包各服务"><a href="#3-2-1使用maven打包各服务" class="headerlink" title="3.2.1使用maven打包各服务"></a>3.2.1使用maven打包各服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#打包注册中心Eureka:</span><br><span class="line">cd &lt;下载的目录&gt;/spring-cloud-frame/base-eureka</span><br><span class="line">mvn install</span><br><span class="line">#打包网关Zuul</span><br><span class="line">cd &lt;下载的目录&gt;/spring-cloud-frame/base-zuul</span><br><span class="line">mvn install</span><br><span class="line">#打包HelloWorld服务</span><br><span class="line">cd &lt;下载的目录&gt;/spring-cloud-frame/service-helloworld</span><br><span class="line">mvn install</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-2-按照一定顺序启动各服务"><a href="#3-2-2-按照一定顺序启动各服务" class="headerlink" title="3.2.2 按照一定顺序启动各服务"></a>3.2.2 按照一定顺序启动各服务</h3><p>java -jar base-eureka-1.0.jar<br>java -jar base-gateway-1.0.jar<br>java -jar service-helloworld-1.0.jar</p>
+<h3 id="3-2-3-访问接口验证"><a href="#3-2-3-访问接口验证" class="headerlink" title="3.2.3 访问接口验证"></a>3.2.3 访问接口验证</h3><p>直接访问接口 <a href="http://127.0.0.1:13001/helloworld" target="_blank" rel="noopener">http://127.0.0.1:13001/helloworld</a></p>
+<p>通过gateway网关访问接口 <a href="http://127.0.0.1:12002/SERVICE-HELLOWORLD/helloworld" target="_blank" rel="noopener">http://127.0.0.1:12002/SERVICE-HELLOWORLD/helloworld</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 fiendo@foxmail.com </span>
@@ -517,7 +514,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-20, 17:15:54</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-09, 17:24:09</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-03, 20:06:16</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/20/Spring-Cloud基础微服务搭建-springboot2/" title="Spring-Cloud基础微服务搭建(springboot2)">https://fiendoghx.github.io/2019/10/20/Spring-Cloud基础微服务搭建-springboot2/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
