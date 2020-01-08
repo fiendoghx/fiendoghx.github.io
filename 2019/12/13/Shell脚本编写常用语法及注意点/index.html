@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>老龚的博客</title>
-  <meta name="keywords" content>
-  <meta name="description" content="老龚的博客">
+  <title>Shell脚本编写常用语法及注意点 | 老龚的博客</title>
+  <meta name="keywords" content=" Shell ">
+  <meta name="description" content="Shell脚本编写常用语法及注意点 | 老龚的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="目录 1.缘由 2.目的 3.具体实施 3.1 事前准备 3.2 实施并验证   4.为什么采用以上方式  1.缘由12344 2.目的3.具体实施3.1事前准备3.2实施并验证4.为什么采用以上方式">
 <meta name="keywords" content="Other">
@@ -53,7 +53,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -424,12 +424,66 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Shell脚本编写常用语法及注意点" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub-Page-尝试（持续更新2019-10-16）"><span class="toc-text">GitHub Page 尝试（持续更新2019-10-16）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#预期的效果"><span class="toc-text">预期的效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TODO"><span class="toc-text">TODO</span></a></li></ol></li></ol>
+        <h1 class="article-title">Shell脚本编写常用语法及注意点</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">Shell</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-12-13 10:33:10'>2019-12-13 09:56</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-缘由"><span class="toc-text">1.缘由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-目的"><span class="toc-text">2.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-开始吧"><span class="toc-text">3.开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1Shell脚本开头"><span class="toc-text">3.1Shell脚本开头</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -442,24 +496,51 @@
     }
 </style>
 </div>
-            <h1 id="GitHub-Page-尝试（持续更新2019-10-16）"><a href="#GitHub-Page-尝试（持续更新2019-10-16）" class="headerlink" title="GitHub Page 尝试（持续更新2019-10-16）"></a>GitHub Page 尝试（持续更新2019-10-16）</h1><p><strong>感谢编写主题的朋友</strong> <a href="https://yelog.org">yelog</a></p>
-<h2 id="预期的效果"><a href="#预期的效果" class="headerlink" title="预期的效果"></a>预期的效果</h2><ol>
-<li>成功套用基本的博客主题 √</li>
-<li>成功发布第一篇博客 √</li>
-<li>持续发布30篇博客 </li>
-<li>开始自定义部分主题效果 </li>
-<li>持续发布100篇博客 </li>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><a href="#1-缘由">1.缘由</a></li>
+<li><a href="#2-目的">2.目的</a></li>
+<li><a href="#3-开始吧">3.开始吧</a><ul>
+<li><a href="#3-1Shell脚本开头">3.1 Shell脚本开头</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-缘由"><a href="#1-缘由" class="headerlink" title="1.缘由"></a>1.缘由</h2><ol>
+<li>在项目中写shell脚本时想当然得认为可以正常执行，却由于一些小细节，让本身可以正常执行的脚本不能执行了。</li>
+<li>由于不是天天写shell脚本，某些常用语法有时也会忘记，故做记录。</li>
 </ol>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
-<li>spring-cloud基础微服务搭建</li>
-<li>mybatis源码解析</li>
-<li>报表类-统计图</li>
-<li>报表类-表格</li>
+<h2 id="2-目的"><a href="#2-目的" class="headerlink" title="2.目的"></a>2.目的</h2><ol>
+<li>能够快速找到自己要的常用语法</li>
+<li>能够不被小细节打倒，让脚本更稳定</li>
 </ol>
+<h2 id="3-开始吧"><a href="#3-开始吧" class="headerlink" title="3.开始吧"></a>3.开始吧</h2><h3 id="3-1Shell脚本开头"><a href="#3-1Shell脚本开头" class="headerlink" title="3.1Shell脚本开头"></a>3.1Shell脚本开头</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line">export $PATH</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 
-        </article>
-        
-        
+<p>#! /bin/bash 申明脚本执行方式，屏蔽不同系统差异</p>
+<p>export $PATH<br>source /etc/profile<br>上面两句加载环境变量，防止部分指令在脚本中不生效</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 fiendo@foxmail.com </span>
+    </div>
+</article>
+
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Shell脚本编写常用语法及注意点</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="fiendo">fiendo</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-12-13, 09:56:07</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-13, 10:33:10</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/13/Shell脚本编写常用语法及注意点/" title="Shell脚本编写常用语法及注意点">https://fiendoghx.github.io/2019/12/13/Shell脚本编写常用语法及注意点/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -479,6 +560,13 @@
         gitalk.render('comments')
     })
 </script>
+
+
+
+
+    
+
+
 
 
     </div>
